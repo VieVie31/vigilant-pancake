@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16 nov. 2016, 17:22:02
+    Author     : mac
+*/
+
+#email {
+    border: 1px solid #dcdcdc;
+    padding: 12px 10px;
+    width: 238px;
+    -webkit-appearance:none;
+}
+
+#password {
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    padding: 12px 10px;
+    width: 238px;
+    -webkit-appearance:none;
+}
+
+#submit {
+    background-color: #1dabb8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 12px 20px;
+    -webkit-appearance:none;
+}
+
+#submit:hover {
+    background-color: #198d98;
+}
+
