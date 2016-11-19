@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mac
+ * @author VieVie31
  */
 public class GeneralInfos extends HttpServlet {
 
@@ -58,6 +58,16 @@ public class GeneralInfos extends HttpServlet {
         }
     }
     
+    /**
+     * Get manufacturer infos by id
+     * eg. GeneralInfos?command=get_manufacturer&manufacturer_id=42
+     * 
+     * @param id the id of the manufacturer to get infos
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     * If <code>action_status</code> is set to 'done' then there is another 
+     * attribute : <code>manufacturer</code> with the manufactuer infos as value
+     */
     public String getManufacturerById(String id) {
         try {
             Manufacturer m = FuncTools.getGeneralDAO().getManufacturerById(
@@ -72,6 +82,16 @@ public class GeneralInfos extends HttpServlet {
         }
     }
     
+    /**
+     * Get the list of product codes.
+     * eg. GeneralInfos?command=get_product_codes
+     * 
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     * If <code>action_status</code> is set to 'done' then there is another 
+     * attribute : <code>product_codes_lst</code> with the list of product code
+     * infos as value
+     */
     public String getProductCodes() {
         try {
             ArrayList<ProductCode> pc = FuncTools.getGeneralDAO().getProductCodeList();
@@ -89,7 +109,7 @@ public class GeneralInfos extends HttpServlet {
             if (!pc.isEmpty())
                 sb.append(pc.get(pc.size() - 1).toString());
             
-            sb.append("]}");
+            sb.append("], action_status: 'done'}");
             
             return sb.toString();
         } catch (SQLException ex) {

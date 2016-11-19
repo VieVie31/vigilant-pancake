@@ -21,7 +21,9 @@ setInterval(function() {
 function notify(text) {
     var notif = document.createElement("notif");
     notif.classList.add("notification");
-    notif.innerHTML = text;
+    notif.innerHTML = "&#x1f514;&nbsp;&nbsp;" + text;
 
     document.body.appendChild(notif);
+    
+    new Audio("sound/notif.mp3").play();
 }

@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mac
+ * @author VieVie31
  */
 public class Orders extends HttpServlet {
 
@@ -68,6 +66,14 @@ public class Orders extends HttpServlet {
         }
     }
     
+    /**
+     * Delete command order of the connected client by order id.
+     * eg. Orders?command=del_order&order_num=31415
+     * 
+     * @param request the servlet request
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     */
     public String delOrder(HttpServletRequest request) {
         HttpSession session = request.getSession();
         
@@ -87,13 +93,20 @@ public class Orders extends HttpServlet {
         }
     }
     
+    /**
+     * Make an order.
+     * eg. Orders?command=make_order&order_num=666&product_id=980005&quandity=50&shipping_cost=12.7&sales_date=2016-11-16&shipping_date=2016-11-16&freight_company=BAMBAM
+     * 
+     * @param request the servlet request
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     */
     public String makeOrder(HttpServletRequest request) {
         HttpSession session = request.getSession();
         
         PurchaseOrder po;
         
         try {
-            //http://localhost:8080/VigilantPancake/Orders?command=make_order&order_num=666&product_id=980005&quandity=50&shipping_cost=12.7&sales_date=2016-11-16&shipping_date=2016-11-16&freight_company=BAMBAM
             po = new PurchaseOrder(
                     Integer.parseInt((String) request.getParameter("order_num")),
                     FuncTools.getGeneralDAO().getCustomerByEmail((String) session.getAttribute("email")).getCustomer_id(), //do not let other customer take order for another custoemr
@@ -116,6 +129,16 @@ public class Orders extends HttpServlet {
         
     }
     
+    /**
+     * Get the list of purchase order of the current client.
+     * eg. Orders?command=get_orders
+     * 
+     * @param request the servlet request
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     * If <code>action_status</code> is set to 'done' then there is another 
+     * attribute : <code>orders</code> with the list of orders as value.
+     */
     public String getOrders(HttpServletRequest request) {
         HttpSession session = request.getSession();
         
@@ -139,7 +162,7 @@ public class Orders extends HttpServlet {
             if (!po.isEmpty())
                 sb.append(po.get(po.size() - 1).toString());
 
-            sb.append("]}");
+            sb.append("], action_status : 'done'}");
             
             return sb.toString();
         } catch (SQLException ex) {

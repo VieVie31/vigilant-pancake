@@ -12,9 +12,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mac
+ * @author VieVie31
  */
 public class CartManager extends HttpServlet {
 
@@ -80,6 +77,16 @@ public class CartManager extends HttpServlet {
         }
     }
     
+    
+    /**
+     * Delete article by id from the cart.
+     * eg : CartManager?command=del_article&product_id=666
+     * 
+     * @param request the HttpServletRequest request
+     * @param product_id the product id to remove from the cart
+     * @return a json object as string with attribute action_status
+     * and value 'done' if succeded else 'fail'.
+     */
     protected String delArticle(HttpServletRequest request, int product_id) {
         //!!\\ : del just 1 occurence of the article if exist !!!
         
@@ -105,6 +112,15 @@ public class CartManager extends HttpServlet {
         return "{action_status : 'fail'}";
     }
 
+    /**
+     * Add article by id to the cart.
+     * eg : CartManager?command=add_article&product_id=666
+     * 
+     * @param request the HttpServletRequest request
+     * @param product_id the product id to add to the cart
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     */
     protected String addArticle(HttpServletRequest request, int product_id) {
         HttpSession session = request.getSession();
         ArrayList<Product> myCart = (ArrayList<Product>) session.getAttribute("articles");
@@ -134,6 +150,14 @@ public class CartManager extends HttpServlet {
         }
     }
     
+    /**
+     * Get the list of all articles in the cart.
+     * eg : CartManager?command=get_articles
+     * 
+     * @param request servlet request
+     * @return a json object as string with attribute <code>articles</code>
+     * and value the list of products.
+     */
     protected String getArticles(HttpServletRequest request) {
         StringBuilder sb = new StringBuilder();
         

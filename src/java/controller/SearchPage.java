@@ -36,6 +36,7 @@ public class SearchPage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setAttribute("isLogged", FuncTools.checkSessionLogin(request));
         
         request.setAttribute("product_code_select", makeProductCodeSelect());
         request.setAttribute("manufacturer_id_select", makeManufacturerIdSelect());    

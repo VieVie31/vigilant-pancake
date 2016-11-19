@@ -1,7 +1,7 @@
 <%-- 
     Document   : manufacturer_page
     Created on : 18 nov. 2016, 10:35:40
-    Author     : mac
+    Author     : VieVie31
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manufacturer</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/notif.js"></script>
         <script type="text/javascript" src="js/loader.js"></script>
     </head>

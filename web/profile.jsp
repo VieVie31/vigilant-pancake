@@ -1,7 +1,7 @@
 <%-- 
     Document   : profile
     Created on : 15 nov. 2016, 21:15:31
-    Author     : mac
+    Author     : VieVie31
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="jquery.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/csshake.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/notif.js"></script>
         <script type="text/javascript" src="js/loader.js"></script>
     </head>
@@ -123,6 +124,10 @@
                 </td>
             </tr>
         </table>
+            
+        <a class="cool_link" href="SearchPage" style="position:relative;left:45%;top:20px;">
+            MAKE SEARCH !
+        </a>
             
         <script>
             function get_orders_lst() {

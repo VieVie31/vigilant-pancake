@@ -1,7 +1,7 @@
 <%-- 
     Document   : search_page
     Created on : 16 nov. 2016, 18:56:40
-    Author     : mac
+    Author     : VieVie31
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
         <title>Search !</title>
         
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/notif.js"></script>
     </head>
     <body>
@@ -27,11 +27,13 @@
         </div>
         
         <div id="results_form">
-            <table id="results_table">
+            <table id="results_table" style="max-width: 700px;">
             </table>
         </div>
             
-        <a href="#" class="disconnect" id="disconnect" style="position:fixed;right:5px;">GO 2 CART</a>
+        <a href='${isLogged ? "#" : "Login"}' class="disconnect" id="disconnect" style="position:fixed;right:5px;">
+            ${isLogged ? "GO 2 CART" : "LOGIN"}
+        </a>
             
         <script>
             function update_product_list() {
@@ -173,6 +175,8 @@
 
                 xhr.send(null);
             }
+            
+            update_product_list();
         
             setInterval(get_product_codes, 1000);
         </script>
