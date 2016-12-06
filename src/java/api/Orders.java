@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,6 +62,9 @@ public class Orders extends HttpServlet {
                 return;
             case "del_order":
                 out.print(delOrder(request));
+                return;
+            case "update_order":
+                out.print(updateOrder(request));
                 return;
             default:
                 out.print("{action_status : 'fail'}");
@@ -123,6 +128,41 @@ public class Orders extends HttpServlet {
                     : "{action_status : 'fail'}");
         } catch (SQLException e) {
             return "{action_status : 'fail'}";
+        } catch (Exception e) {
+            return "{action_status : 'fail'}";
+        }
+        
+    }
+    
+    /**
+     * Update an order.
+     * eg. Orders?command=update_order&order_num=666&quandity=50&freight_company=BAMBAM
+     * 
+     * @param request the servlet request
+     * @return a json object as string with attribute <code>action_status</code>
+     * and value 'done' if succeded else 'fail'.
+     */
+    public String updateOrder(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        
+        PurchaseOrder po;
+        
+        try {
+            //on autorise l'utilisateur a changer que certains champs (soucis de coherence !!)
+            po = new PurchaseOrder(
+                    Integer.parseInt((String) request.getParameter("order_num")),
+                    FuncTools.getGeneralDAO().getCustomerByEmail((String) session.getAttribute("email")).getCustomer_id(), //do not let other customer take order for another custoemr
+                    0,//Integer.parseInt((String) request.getParameter("product_id")),
+                    Integer.parseInt((String) request.getParameter("quandity")),
+                    0.,//Double.parseDouble((String) request.getParameter("shipping_cost")),
+                    "",//(String) request.getParameter("sales_date"),
+                    "",//(String) request.getParameter("shipping_date"),
+                    (String) request.getParameter("freight_company")
+            );
+            
+            return (FuncTools.getGeneralDAO().updatePurchaseOrderByOrderId(po) 
+                    ? "{action_status : 'done'}"
+                    : "{action_status : 'fail'}");
         } catch (Exception e) {
             return "{action_status : 'fail'}";
         }
