@@ -38,6 +38,7 @@
                 xhr.send(null);
 
             }
+            
             function del_ordr(d) {
                 console.log("delete");
                 var xhr = new XMLHttpRequest();
@@ -64,6 +65,36 @@
 
                 xhr.send(null);
             }
+            
+            function update_order(order_num) {
+                console.log("update");
+                var xhr = new XMLHttpRequest();
+                
+                var tmp = "Orders?command=update_order";
+                tmp += "&order_num=" + order_num;
+                tmp += "&quandity="  + $("#2359685_q")[0].value;
+                tmp += "&freight_company=" + encodeURIComponent($("#2359685_fc")[0].value);
+                console.log(tmp);
+                
+                xhr.open('GET', tmp);
+                
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = eval("(" + xhr.responseText + ")");
+                        console.log(response);
+                        
+                        notify((response.action_status == 'done') 
+                               ? "successfully update order : " + order_num
+                               : "failed to update bro :/ "
+                        );
+                    } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                        notify("failed to update bro :/ ");
+                    }
+                };
+
+                xhr.send(null);
+            }
+            
             function display_orders(lst) {
                 if ('' + lst == '' + []) {
                     notify("No Result Found :/");
@@ -85,15 +116,18 @@
                     del_order = row.insertCell(8);
                     del_order.innerHTML = "<button onclick='del_ordr(" + t.order_num + ")'>-1</button>";
 
+                    update_case = row.insertCell(9);
+                    update_case.innerHTML = "<button onclick='update_order(" + t.order_num + ")'>UpDate</button>";
+
                     order_num.innerHTML = t.order_num;
                     customer_id.innerHTML = t.customer_id;
                     product_id.innerHTML = t.product_id;
-                    quandity.innerHTML = t.quandity;
+                    quandity.innerHTML = "<input id='" + t.order_num + "_q' type='number' step='1' value='" + t.quandity + "' min='1' max='10000'>";
                     shipping_cost.innerHTML = t.shipping_cost;
                     customer_id.innerHTML = t.customer_id;
                     sales_date.innerHTML = t.sales_date;
                     shipping_date.innerHTML = t.shipping_date;
-                    freight_company.innerHTML = atob(t.freight_company);
+                    freight_company.innerHTML = "<input id='" + t.order_num + "_fc' type='text' value='" + atob(t.freight_company) + "'>";
 
                     order_num.className = "product_code";
 
