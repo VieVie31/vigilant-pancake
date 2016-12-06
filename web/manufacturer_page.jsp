@@ -47,12 +47,8 @@
                 
                 <tr>
                     <td>CITY</td>
-                    <td>${manufacturer.city}</td>
                     <td>
-                        <details>
-                            <summary>Try to localise</summary>
-                            <img alt="NOT FOUND" src='http://maps.googleapis.com/maps/api/staticmap?center=${manufacturer.city}&zoom=15&format=png&sensor=false&size=300x200&maptype=roadmap&style=feature:road|element:geometry|color:0x805745|visibility:on&style=feature:administrative|visibility:off&style=element:labels|visibility:off&style=feature:water|element:labels|color:0x8080ff|visibility:off'/>
-                        </details>
+                        <a href=https://duckduckgo.com/?ia=maps&q=map+${manufacturer.city}">${manufacturer.city}</a>
                     </td>
                 </tr>
                 

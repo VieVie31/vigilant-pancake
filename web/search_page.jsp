@@ -31,7 +31,7 @@
             </table>
         </div>
             
-        <a href='${isLogged ? "#" : "Login"}' class="disconnect" id="disconnect" style="position:fixed;right:5px;">
+        <a href='${isLogged ? "CartCall" : "Login"}' class="disconnect" id="disconnect" style="position:fixed;right:5px;">
             ${isLogged ? "GO 2 CART" : "LOGIN"}
         </a>
             

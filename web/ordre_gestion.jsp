@@ -72,8 +72,8 @@
                 
                 var tmp = "Orders?command=update_order";
                 tmp += "&order_num=" + order_num;
-                tmp += "&quandity="  + $("#2359685_q")[0].value;
-                tmp += "&freight_company=" + encodeURIComponent($("#2359685_fc")[0].value);
+                tmp += "&quandity="  + $("#" + order_num + "_q")[0].value;
+                tmp += "&freight_company=" + encodeURIComponent($("#" + order_num + "_fc")[0].value);
                 console.log(tmp);
                 
                 xhr.open('GET', tmp);
@@ -114,7 +114,7 @@
                     shipping_date = row.insertCell(6);
                     freight_company = row.insertCell(7);
                     del_order = row.insertCell(8);
-                    del_order.innerHTML = "<button onclick='del_ordr(" + t.order_num + ")'>-1</button>";
+                    del_order.innerHTML = "<button onclick='del_ordr(" + t.order_num + ")' style='background:red'>-1</button>";
 
                     update_case = row.insertCell(9);
                     update_case.innerHTML = "<button onclick='update_order(" + t.order_num + ")'>UpDate</button>";

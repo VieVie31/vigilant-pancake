@@ -117,7 +117,7 @@
             <tr>
                 <td>ORDERS</td>
                 <td>
-                    <a class="cool_link" href="#">See Orders</a>
+                    <a class="cool_link" href="OrdersCall">See Orders</a>
                 </td>
                 <td>
                     <div id="orders_graph_stats" style="width: 777px; height: 90%;"></div>

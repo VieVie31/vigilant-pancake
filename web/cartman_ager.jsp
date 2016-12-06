@@ -30,7 +30,7 @@
 
         <script type="text/javascript" >
             var articles = null;
-            var fret_company = prompt("choose ur fret_company : ", "postte");
+            var fret_company = "default fret company";//prompt("choose ur fret_company : ", "postte");
             function article_list() {
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'CartManager?command=get_articles');
@@ -77,7 +77,7 @@
                     product_code.className = "product_code";
                     // a changer
                     del_to_cart = row.insertCell(6);
-                    del_to_cart.innerHTML = "<button onclick='dels_to_cart(" + t.product_id + ")'>-1</button>";
+                    del_to_cart.innerHTML = "<button onclick='dels_to_cart(" + t.product_id + ")' style='background:red'>-1</button>";
                 }
 
                 row = table.insertRow(0);
@@ -129,6 +129,7 @@
             }
 
             function buy() {
+                var cnt = 0;
                 articles.forEach(function (art) {
                     //console.log(art);
 
@@ -155,6 +156,11 @@
                             if (response.action_status == "fail")
                                 notify("failed make an order on " + art.product_id + " :/ ");
                             dels_to_cart(art.product_id);
+                            
+                            cnt ++;
+                            
+                            if (cnt == articles.length)
+                                window.location = "OrdersCall";
                         } else if (xhr.readyState === 4 && xhr.status !== 200) { //maybe session out...
                             notify("failed make an order on " + art.product_id + " :/ ");
                         }
@@ -163,6 +169,7 @@
                     xhr.send(null);
 
                 });
+                
             }
 
 
