@@ -20,6 +20,7 @@ public class Product {
     protected double markup;
     protected boolean available;
     protected String description;
+    public int count;
 
     public Product(int product_id, String product_code, int manufacturer_id, 
             double purchase_cost, int quantity_on_hand, double markup, 
