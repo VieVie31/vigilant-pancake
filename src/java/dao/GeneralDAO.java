@@ -187,6 +187,31 @@ public class GeneralDAO {
        return true;
    }
    
+   public boolean updatePurchaseOrderByOrderId(PurchaseOrder po) {
+       String sql = "UPDATE APP.PURCHASE_ORDER SET "
+               + "QUANTITY = ?, "
+               + "FREIGHT_COMPANY = ? "
+               + "WHERE ORDER_NUM = ?";
+       
+       try {
+           Connection connection = dataSource.getConnection();
+           PreparedStatement stmt = connection.prepareStatement(sql);
+           
+           stmt.setInt(1, po.getQuandity());
+           stmt.setString(2, po.getFreight_company());
+           stmt.setInt(3, po.getOrder_num());
+           
+           stmt.executeUpdate();
+           stmt.close();
+           connection.close();
+           
+           return true;
+       } catch (Exception e) {
+           return false; //erreur de merde !!
+       }
+      
+   }
+   
    public ArrayList<PurchaseOrder> getPurchaseOrder(String email) {
        Customer customer = getCustomerByEmail(email);
        
