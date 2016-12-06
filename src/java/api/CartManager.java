@@ -5,6 +5,7 @@
  */
 package api;
 
+import java.util.*;
 import controller.FuncTools;
 import dao.ProductSearchRequestBuilder;
 import entity.Product;
@@ -182,6 +183,7 @@ public class CartManager extends HttpServlet {
         
         return sb.toString();
     }
+    
     
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
