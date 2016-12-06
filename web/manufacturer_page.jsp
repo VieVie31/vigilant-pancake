@@ -84,6 +84,26 @@
                 
             </table>
         </div>
+            
+     <nav>
+        <li>
+            <ul>
+                <a href='Profile'>PROFIL</a>
+            </ul>
+            <ul>
+                <a href='CartCall'>MY CART</a>
+            </ul>
+            <ul>
+                <a href='OrdersCall'>MY ORDERS</a>
+            </ul>
+            <ul>
+                <a href='SearchPage'>SEARCH</a>
+            </ul>
+            <ul>
+                <a href='Disconnect'>DISCONNECTED</a>
+            </ul>
+        </li>
+    </nav>
                             
         <a class="cool_link" style="position:relative;left:50%;top:20px;" href="SearchPage">MAKE SEARCH</a>
     </body>

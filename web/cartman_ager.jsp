@@ -23,10 +23,29 @@
             </table>
         </div>
 
-        <button  style="position:relative;left:45%;top:20px;" onclick="buy();">
+        <button  style="position:fixed;left:85%;top:150px;" onclick="buy();">
             BUY !
         </button>
-
+       
+    <nav>
+        <li>
+            <ul>
+                <a href='Profile'>PROFIL</a>
+            </ul>
+            <ul>
+                <a href='CartCall'>MY CART</a>
+            </ul>
+            <ul>
+                <a href='OrdersCall'>MY ORDERS</a>
+            </ul>
+            <ul>
+                <a href='SearchPage'>SEARCH</a>
+            </ul>
+            <ul>
+                <a href='Disconnect'>DISCONNECTED</a>
+            </ul>
+        </li>
+    </nav>
 
         <script type="text/javascript" >
             var articles = null;

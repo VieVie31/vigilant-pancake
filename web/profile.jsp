@@ -129,6 +129,26 @@
             MAKE SEARCH !
         </a>
             
+        <nav>
+        <li>
+            <ul>
+                <a href='Profile'>PROFIL</a>
+            </ul>
+            <ul>
+                <a href='CartCall'>MY CART</a>
+            </ul>
+            <ul>
+                <a href='OrdersCall'>MY ORDERS</a>
+            </ul>
+            <ul>
+                <a href='SearchPage'>SEARCH</a>
+            </ul>
+            <ul>
+                <a href='Disconnect'>DISCONNECTED</a>
+            </ul>
+        </li>
+    </nav>
+            
         <script>
             function get_orders_lst() {
                 var xhr = new XMLHttpRequest();

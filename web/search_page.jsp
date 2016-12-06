@@ -35,6 +35,26 @@
             ${isLogged ? "GO 2 CART" : "LOGIN"}
         </a>
             
+    <nav>
+        <li>
+            <ul>
+                <a href='Profile'>PROFIL</a>
+            </ul>
+            <ul>
+                <a href='CartCall'>MY CART</a>
+            </ul>
+            <ul>
+                <a href='OrdersCall'>MY ORDERS</a>
+            </ul>
+            <ul>
+                <a href='SearchPage'>SEARCH</a>
+            </ul>
+            <ul>
+                <a href='Disconnect'>DISCONNECTED</a>
+            </ul>
+        </li>
+    </nav>
+        
         <script>
             function update_product_list() {
                 product_id = parseInt($("#product_id")[0].value);
