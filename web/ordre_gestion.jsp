@@ -91,6 +91,12 @@
             
             function update_order(order_num) {
                 console.log("update");
+                
+                if (parseInt($("#" + order_num + "_q")[0].value) <= 0) {
+                    notify ("no order with null or < 0 quantity !!");
+                    return;
+                }
+                
                 var xhr = new XMLHttpRequest();
                 
                 var tmp = "Orders?command=update_order";
