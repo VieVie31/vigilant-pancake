@@ -114,7 +114,7 @@
                 product_code.innerHTML = "<strong>Product Type</strong>";
                 manufacturer_id.innerHTML = "<strong>Manufacturer</strong>";
                 purchase_cost.innerHTML = "<strong>Cost</strong>";
-                quantity_on_hand.innerHTML = "<strong>Quantity</strong>";
+                quantity_on_hand.innerHTML = "<strong>Quantity (in stock)</strong>";
                 description.innerHTML = "<strong>Description</strong>";
 
             }
@@ -137,7 +137,7 @@
                         }
                         notify(" not found in cart :/");
 
-                        article_list(); ///////////////////////////
+                        article_list();
                     } else if (xhr.readyState === 4 && xhr.status !== 200) { //maybe session out...
                         notify("failed to del from cart :/ ");
                     }

@@ -16,12 +16,14 @@
     </head>
     <body>
         <h1> Order Manager</h1>
-        <div id="results_form">
-            <table id="results_table" style="max-width: 700px;">
+        <div id="results_form" style="left: 100px;">
+            <table id="results_table" style="max-width: 700px; left: 100px;">
             </table>
         </div>
 
-    <nav style="right:1200px;">
+    <nav style="">
+        <details>
+            <summary style="color:white;">Navigation</summary>
         <li>
             <ul>
                 <a href='Profile'>PROFIL</a>
@@ -39,6 +41,7 @@
                 <a href='Disconnect'>DISCONNECTED</a>
             </ul>
         </li>
+        </details>
     </nav>
         
         
@@ -78,7 +81,6 @@
                         }
                         notify(" not found in order liste :/");
 
-                        article_list(); ///////////////////////////
                     } else if (xhr.readyState === 4 && xhr.status !== 200) { //maybe session out...
                         notify("failed to del from order liste :/ ");
                     }
